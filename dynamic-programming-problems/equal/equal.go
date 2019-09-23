@@ -33,8 +33,6 @@ func equal(arr []int32) int32 {
     return result
 }
 
-
-
 func getNumAction(delta int32) int32 {
     var result int32 = 0
 
