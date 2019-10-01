@@ -1,7 +1,7 @@
-package lcs
+package abbreviation
 
-// https://leetcode.com/problems/longest-common-subsequence/submissions/
-func longestCommonSubsequence(text1 string, text2 string) int {
+// Complete the abbreviation function below.
+func abbreviation(text1 string, text2 string) string {
 	r1 := []rune(text1)
 	r2 := []rune(text2)
 	combinations := [][]int{}
@@ -11,7 +11,7 @@ func longestCommonSubsequence(text1 string, text2 string) int {
 
 	for i := 0; i < len(r1); i++ {
 		for j := 0; j < len(r2); j++ {
-			if strings.r2[j] == r1[i] {
+			if r2[j] == r1[i] {
 				if i > 0 && j > 0 {
 					combinations[i][j] = combinations[i-1][j-1] + 1
 					continue
@@ -37,7 +37,11 @@ func longestCommonSubsequence(text1 string, text2 string) int {
 		}
 	}
 
-	return combinations[len(r1)-1][len(r2)-1]
+	lenCS := combinations[len(r1)-1][len(r2)-1]
+	if lenCS == len(r2) {
+		return "YES"
+	}
+	return "NO"
 }
 
 func max(a int, b int) int {
