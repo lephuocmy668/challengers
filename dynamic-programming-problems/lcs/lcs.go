@@ -11,7 +11,7 @@ func longestCommonSubsequence(text1 string, text2 string) int {
 
 	for i := 0; i < len(r1); i++ {
 		for j := 0; j < len(r2); j++ {
-			if strings.r2[j] == r1[i] {
+			if r2[j] == r1[i] {
 				if i > 0 && j > 0 {
 					combinations[i][j] = combinations[i-1][j-1] + 1
 					continue
