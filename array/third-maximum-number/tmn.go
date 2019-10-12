@@ -4,6 +4,7 @@ import (
 	"math"
 )
 
+// https://leetcode.com/problems/third-maximum-number/submissions/
 func thirdMax(nums []int) int {
 	if len(nums) < 1 {
 		return 0
