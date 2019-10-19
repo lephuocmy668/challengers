@@ -13,34 +13,34 @@ func Test_checkSubarraySum(t *testing.T) {
 		want bool
 	}
 	tests := []testCase{
-		// testCase{
-		// 	name: "Test Case 1",
-		// 	args: args{
-		// 		nums: []int{23, 2, 4, 6, 7},
-		// 		k:    6,
-		// 	}, want: true,
-		// },
-		// testCase{
-		// 	name: "Test Case 2",
-		// 	args: args{
-		// 		nums: []int{23, 2, 4, 6, 7},
-		// 		k:    0,
-		// 	}, want: false,
-		// },
-		// testCase{
-		// 	name: "Test Case 3",
-		// 	args: args{
-		// 		nums: []int{0, 0},
-		// 		k:    0,
-		// 	}, want: true,
-		// },
-		// testCase{
-		// 	name: "Test Case 4",
-		// 	args: args{
-		// 		nums: []int{0, 1, 0},
-		// 		k:    0,
-		// 	}, want: false,
-		// },
+		testCase{
+			name: "Test Case 1",
+			args: args{
+				nums: []int{23, 2, 4, 6, 7},
+				k:    6,
+			}, want: true,
+		},
+		testCase{
+			name: "Test Case 2",
+			args: args{
+				nums: []int{23, 2, 4, 6, 7},
+				k:    0,
+			}, want: false,
+		},
+		testCase{
+			name: "Test Case 3",
+			args: args{
+				nums: []int{0, 0},
+				k:    0,
+			}, want: true,
+		},
+		testCase{
+			name: "Test Case 4",
+			args: args{
+				nums: []int{0, 1, 0},
+				k:    0,
+			}, want: false,
+		},
 		testCase{
 			name: "Test Case 5",
 			args: args{
