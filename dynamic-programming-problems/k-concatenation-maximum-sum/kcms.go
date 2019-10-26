@@ -1,5 +1,7 @@
 package kcms
 
+import "math"
+
 // https://leetcode.com/problems/k-concatenation-maximum-sum/
 func kConcatenationMaxSum(arr []int, k int) int {
 	totalSum := 0
@@ -26,7 +28,7 @@ func kConcatenationMaxSum(arr []int, k int) int {
 		localMaxSum = max(localCurSum, localMaxSum)
 	}
 
-	return max(max(max(maxSumLeft+maxSumRight, (totalSum*max(k-2, 0))+maxSumLeft+maxSumRight), localMaxSum), totalSum*k)
+	return max(max(max(maxSumLeft+maxSumRight, (totalSum*max(k-2, 0))+maxSumLeft+maxSumRight), localMaxSum), totalSum*k) % int((math.Pow(10, 9) + 7))
 }
 
 func max(a int, b int) int {
