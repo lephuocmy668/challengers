@@ -2,6 +2,7 @@ package sum
 
 import "sort"
 
+// https://leetcode.com/problems/3sum/
 func threeSum(nums []int) [][]int {
 	sort.Ints(nums)
 	result := [][]int{}
