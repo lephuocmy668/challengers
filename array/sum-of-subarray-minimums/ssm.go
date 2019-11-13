@@ -49,7 +49,6 @@ func sumSubarrayMins(A []int) int {
 		if i < len(A) {
 			s.push(i)
 		}
-		result %= mod
 	}
 	return result
 }
