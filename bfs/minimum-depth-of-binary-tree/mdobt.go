@@ -1,6 +1,6 @@
 package mdobt
 
-
+// https://leetcode.com/problems/minimum-depth-of-binary-tree/submissions/
 /**
  * Definition for a binary tree node.
  * type TreeNode struct {
