@@ -1,57 +1,57 @@
 package main
 
-import "fmt"
-
-func main() {
-	solveNQueens(5)
-}
-
+// https://leetcode.com/problems/n-queens/submissions/
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for N-Queens.
 func solveNQueens(n int) [][]string {
 	res := [][]string{}
-	currentPosition := 0
+	currentPosition := 0 // position is considering of queen at each column
 	s := newStack()
 	s.push(0)
 
 	for !s.isEmpty() {
 		row := s.size()
 		if row == n {
-			fmt.Println(s.values)
 			res = append(res, s.toResult())
 		}
 
+		// init valid position = -1
 		validPosition := -1
+	childLoop:
 		for i := currentPosition; i < n; i++ {
+			// if find out valid position, break child loop
 			if isSafe(s, row, i) {
 				validPosition = i
+				break childLoop
 			}
 		}
 
+		// if there is valid position, push to stack and continue
 		if validPosition >= 0 {
 			s.push(validPosition)
 			currentPosition = 0
-		} else {
-			currentPosition = s.pop()
-			if s.isEmpty() {
-				if currentPosition == n-1 {
-					return res
-				}
-				currentPosition++
-				s.push(currentPosition)
-				currentPosition = 0
-			} else {
-				currentPosition++
-			}
+			continue
 		}
+
+		// if there is no valid position, return previous row and set next column()
+		currentPosition = s.pop()
+		if !s.isEmpty() {
+			currentPosition++
+			continue
+		}
+
+		// if return to first row and considering column is last column, return
+		if currentPosition == n-1 {
+			return res
+		}
+		currentPosition++
+		s.push(currentPosition)
+		currentPosition = 0
 	}
 
 	return res
 }
 
 func isSafe(board *stack, row, col int) bool {
-	if board.size() == row+1 {
-		return false
-	}
-
 	for i, e := range board.values {
 		if e == col || i-row == e-col || i-row == col-e {
 			return false
@@ -61,6 +61,7 @@ func isSafe(board *stack, row, col int) bool {
 	return true
 }
 
+// stack is special stack that was implemented for this problem
 type stack struct {
 	values []int
 }
@@ -71,6 +72,7 @@ func newStack() *stack {
 	}
 }
 
+// toResult convert stack elements to result of this problem
 func (s *stack) toResult() []string {
 	res := []string{}
 	for i := 0; i < s.size(); i++ {
@@ -101,14 +103,6 @@ func (s *stack) pop() int {
 	return result
 }
 
-func (s *stack) peek() int {
-	return s.values[len(s.values)-1]
-}
-
 func (s *stack) size() int {
 	return len(s.values)
-}
-
-func (s *stack) get(index int) int {
-	return s.values[index]
 }
