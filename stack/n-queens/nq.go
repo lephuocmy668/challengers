@@ -1,4 +1,4 @@
-package main
+package nq
 
 // https://leetcode.com/problems/n-queens/submissions/
 // Runtime: 0 ms, faster than 100.00% of Go online submissions for N-Queens.
