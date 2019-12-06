@@ -3,48 +3,45 @@ package te
 // Runtime: 24 ms, faster than 16.90% of Go online submissions for Top K Frequent Elements.
 // https://leetcode.com/problems/top-k-frequent-elements/submissions/
 func topKFrequent(nums []int, k int) []int {
-	kmap := make(map[int]*Element)
+	numberMap := make(map[int]*Element)
 	nodeMap := make(map[int]*Node)
 	lk := NewLinkedList()
 
 	for _, num := range nums {
-		if k, ok := kmap[num]; ok {
-			node := nodeMap[k.count]
-			element, ok := node.Elements[k]
-			if !ok {
-			}
-			delete(node.Elements, k)
+		if numberElement, ok := numberMap[num]; ok {
+			node := nodeMap[numberElement.count]
+			element := node.Elements[numberElement]
+			delete(node.Elements, numberElement)
 
-			k.count++
-			if node, ok := nodeMap[k.count]; ok {
-				node.Elements[k] = k
+			numberElement.count++
+			if node, ok := nodeMap[numberElement.count]; ok {
+				node.Elements[numberElement] = numberElement
 			} else {
 				node := &Node{
 					Elements: map[*Element]*Element{
 						element: element,
 					},
 				}
-				nodeMap[k.count] = node
+				nodeMap[numberElement.count] = node
 				lk.Append(node)
 			}
 
 		} else {
-			count := 1
-			k := &Element{
-				k:     num,
-				count: count,
+			numberElement := &Element{
+				k: num,
 			}
-			kmap[num] = k
+			numberMap[num] = numberElement
 
-			if node, ok := nodeMap[count]; ok {
-				node.Elements[k] = k
+			numberElement.count++
+			if node, ok := nodeMap[numberElement.count]; ok {
+				node.Elements[numberElement] = numberElement
 			} else {
 				node := &Node{
 					Elements: map[*Element]*Element{
-						k: k,
+						numberElement: numberElement,
 					},
 				}
-				nodeMap[count] = node
+				nodeMap[numberElement.count] = node
 				lk.Prepend(node)
 			}
 		}
