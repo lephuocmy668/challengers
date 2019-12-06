@@ -24,6 +24,43 @@ func (lk *LinkedList) Append(newNode *Node) {
 		return
 	}
 
+	newNode.Prev = lk.Tail
 	lk.Tail.Next = newNode
 	lk.Tail = newNode
+}
+
+// Prepend ...
+func (lk *LinkedList) Prepend(newNode *Node) {
+	if lk.Head != nil {
+		lk.Head.Prev = newNode
+	}
+	newNode.Next = lk.Head
+	lk.Head = newNode
+
+	if lk.Tail == nil {
+		lk.Tail = newNode
+	}
+}
+
+// ToResult ...
+func (lk *LinkedList) ToResult(k int) []int {
+	result := []int{}
+	temp := 0
+
+	if lk.Tail == nil {
+		return result
+	}
+	node := lk.Tail
+
+	for node != nil {
+		for _, e := range node.Elements {
+			result = append(result, e.k)
+			temp++
+			if temp == k {
+				return result
+			}
+		}
+		node = node.Prev
+	}
+	return result
 }
