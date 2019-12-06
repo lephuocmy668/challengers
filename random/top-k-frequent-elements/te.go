@@ -1,7 +1,8 @@
 package te
 
-// Runtime: 24 ms, faster than 16.90% of Go online submissions for Top K Frequent Elements.
+// Runtime: 20 ms, faster than 26.41% of Go online submissions for Top K Frequent Elements.
 // https://leetcode.com/problems/top-k-frequent-elements/submissions/
+// TODO: solve DRY
 func topKFrequent(nums []int, k int) []int {
 	numberMap := make(map[int]*Element)
 	nodeMap := make(map[int]*Node)
@@ -10,7 +11,6 @@ func topKFrequent(nums []int, k int) []int {
 	for _, num := range nums {
 		if numberElement, ok := numberMap[num]; ok {
 			node := nodeMap[numberElement.count]
-			element := node.Elements[numberElement]
 			delete(node.Elements, numberElement)
 
 			numberElement.count++
@@ -19,7 +19,7 @@ func topKFrequent(nums []int, k int) []int {
 			} else {
 				node := &Node{
 					Elements: map[*Element]*Element{
-						element: element,
+						numberElement: numberElement,
 					},
 				}
 				nodeMap[numberElement.count] = node
