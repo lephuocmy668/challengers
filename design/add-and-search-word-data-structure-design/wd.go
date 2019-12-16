@@ -1,5 +1,6 @@
 package wd
 
+// https://leetcode.com/problems/add-and-search-word-data-structure-design
 type WordDictionary struct {
 	root *TrieNode
 }
