@@ -7,6 +7,7 @@ import (
 )
 
 // https://leetcode.com/problems/maximum-swap/submissions/
+// Runtime: 0 ms, faster than 100.00% of Go online submissions for Maximum Swap.
 func maximumSwap(num int) int {
 	sortedDigits := strings.Split(strconv.Itoa(num), "")
 	digits := strings.Split(strconv.Itoa(num), "")
