@@ -22,6 +22,7 @@ parentLoop:
 		if digits[i] != sortedDigits[i] {
 			findDigit := digits[i]
 			digits[i] = sortedDigits[i]
+
 			for j := len(sortedDigits) - 1; j > i; j-- {
 				if digits[j] == sortedDigits[i] {
 					digits[j] = findDigit
