@@ -1,5 +1,9 @@
 package ts
 
+// https://leetcode.com/problems/target-sum/
+// Runtime: 680 ms, faster than 25.93% of Go online submissions for Target Sum.
+// Memory Usage: 2.1 MB, less than 100.00% of Go online submissions for Target Sum.
+// Next challenges:
 func dp(nums []int, currentPosition int, currentSum int, target int) int {
 	if currentPosition > len(nums) {
 		return 0
@@ -17,7 +21,6 @@ func dp(nums []int, currentPosition int, currentSum int, target int) int {
 	return count
 }
 
-// https://leetcode.com/problems/target-sum/
 func findTargetSumWays(nums []int, target int) int {
 	return dp(nums, 0, 0, target)
 }
