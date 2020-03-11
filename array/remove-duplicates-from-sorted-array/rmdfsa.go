@@ -1,28 +1,32 @@
 package rmdfsa
 
 // https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
+// Runtime: 4 ms, faster than 89.32% of Go online submissions for Remove Duplicates from Sorted Array II.
+// Memory Usage: 3 MB, less than 100.00% of Go online submissions for Remove Duplicates from Sorted Array II.
 func removeDuplicates(nums []int) int {
-	if len(nums) == 0 {
-		return 0
-	}
-	if len(nums) == 1 {
-		return 1
+	if len(nums) < 3 {
+		return len(nums)
 	}
 
-	count := 1
-	currentNum := nums[0]
-	currentNumCount := 1
+	index := 0
+	count := 0
+	currentNum := 0
+	currentNumCount := 0
 
-	for i := 1; i < len(nums); i++ {
-		if nums[i] == currentNum {
-			currentNumCount += 1
-			if currentNumCount < 3 {
+	for _, num := range nums {
+		if num == currentNum {
+			if currentNumCount < 2 {
 				count++
+				currentNumCount++
+				nums[index] = currentNum
+				index++
 			}
 		} else {
-			currentNum = nums[i]
-			currentNumCount = 1
 			count++
+			currentNum = num
+			currentNumCount = 1
+			nums[index] = currentNum
+			index++
 		}
 	}
 
