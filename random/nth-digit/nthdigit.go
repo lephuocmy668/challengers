@@ -11,17 +11,17 @@ import (
 func findNthDigit(n int) int {
 	var m, start, length, count int64 = int64(n), 1, 1, 9
 
-	// get number that contain digit we finding
+	// get the number that contain digit we finding
 	for m > length*count {
-		m = m - length*count
-		length++
+		m -= length * count
 		count *= 10
 		start *= 10
+		length++
 	}
-	number := start + (m-1)/length
-	numStr := fmt.Sprintf("%d", number)
+	num := start + (m-1)/length
+	numStr := fmt.Sprintf("%d", num)
 
-	// get index of digit we finding in the number
+	// in numStr, get index of digit we finding
 	index := (m - 1) % length
 
 	char := string([]rune(numStr)[int(index)])
